@@ -1,9 +1,16 @@
 const pluralize = require("./pluralize.js");
-let counter = 1;
 const notifier = require('node-notifier');
+
 const minutes = ['минута', 'минуты', 'минут'];
+let counter = 1;
 
 function startingTimer() {
+    const date = new Date();
+    const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
+    console.log(`Работа началась в ${hour}:${minute}`);
+
     notifier.notify({
         title: 'Работа 25 минут!',
         message: 'Одно дело за раз',
